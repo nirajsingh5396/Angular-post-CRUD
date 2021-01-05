@@ -12,13 +12,14 @@ const routes: Routes = [
         component: PostsComponent,
     },
     {
+        path: 'create',
+        component: CreatePostComponent
+    },
+    {
         path: ':id',
         component: PostDetailsComponent
     },
-    {
-        path: 'create',
-        component: CreatePostComponent
-    }
+
 ];
 
 @NgModule({
