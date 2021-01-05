@@ -14,6 +14,7 @@ import { PostsService } from 'src/app/shared/services/posts.service';
 export class CreatePostComponent implements OnInit {
 
   newPostForm: FormGroup;
+  id: string;
 
   constructor(
     private fb: FormBuilder,
@@ -30,9 +31,9 @@ export class CreatePostComponent implements OnInit {
   }
 
   ngOnInit() {
-    const id = this.activedRoute.snapshot.paramMap.get('id');
-    if (id) {
-      this.postService.getPostByID(+id).subscribe(post => {
+    this.id = this.activedRoute.snapshot.paramMap.get('id');
+    if (this.id) {
+      this.postService.getPostByID(+this.id).subscribe(post => {
         if (post) {
           this.newPostForm.setValue({
             'id': post[0].id,
@@ -57,6 +58,21 @@ export class CreatePostComponent implements OnInit {
     this.postService.createPost(post).subscribe(post => {
       if (post.id) {
         this.notity.showNotification('New Post has been Created successfully', 'top', 'green-snackbar');
+      }
+    }, (err) => {
+      this.notity.showNotification('Something went wrong', 'top', 'error');
+    })
+  }
+
+  onUpdatePost() {
+    if (!this.newPostForm.valid) {
+      return;
+    }
+    const post = this.newPostForm.value as IPosts;
+    this.newPostForm.reset('');
+    this.postService.updatePost(post).subscribe(post => {
+      if (post.id) {
+        this.notity.showNotification('New Post has been updated successfully', 'top', 'green-snackbar');
       }
     }, (err) => {
       this.notity.showNotification('Something went wrong', 'top', 'error');

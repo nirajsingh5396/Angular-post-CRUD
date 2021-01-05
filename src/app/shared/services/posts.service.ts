@@ -56,7 +56,7 @@ export class PostsService {
 
   updatePost(post: IPosts): Observable<any> {
     const url = `${this.baseUrl}/${post.id}`;
-    return this.httpClient.get<any>(url, this.options);
+    return this.httpClient.put<any>(url, post, this.options);
   }
 
 

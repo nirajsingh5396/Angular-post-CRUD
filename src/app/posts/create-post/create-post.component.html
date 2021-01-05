@@ -1,4 +1,4 @@
-<form [formGroup]="newPostForm" (ngSubmit)="onCreateNewPost()">
+<form [formGroup]="newPostForm" (ngSubmit)="!id ? onCreateNewPost(): onUpdatePost()">
 
     <h3>Create New Post</h3>
 
@@ -26,9 +26,15 @@
             <input matInput formControlName="body">
         </mat-form-field>
 
-        <div>
+        <div *ngIf="!id ;else update">
             <button mat-raised-button color="primary" type="submit" [disabled]="!newPostForm.valid">Add Post</button>
         </div>
+
+        <ng-template #update>
+            <div>
+                <button mat-raised-button color="primary" type="submit" [disabled]="!newPostForm.valid">Update Post</button>
+            </div>
+        </ng-template>
 
 
     </div>
