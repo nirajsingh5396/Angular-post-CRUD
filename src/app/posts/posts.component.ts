@@ -18,7 +18,8 @@ export class PostsComponent implements OnInit {
     'id',
     'userId',
     'title',
-    'body'
+    'body',
+    'action'
   ];
 
   constructor(
