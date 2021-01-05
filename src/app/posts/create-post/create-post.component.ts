@@ -33,7 +33,6 @@ export class CreatePostComponent implements OnInit {
     const id = this.activedRoute.snapshot.paramMap.get('id');
     if (id) {
       this.postService.getPostByID(+id).subscribe(post => {
-        console.log(post);
         if (post) {
           this.newPostForm.setValue({
             'id': post.id,
@@ -42,7 +41,7 @@ export class CreatePostComponent implements OnInit {
             'body': post.body
           });
         }
-      },(err)=>{
+      }, (err) => {
         this.notity.showNotification('Something went wrong', 'top', 'error');
       })
     }
