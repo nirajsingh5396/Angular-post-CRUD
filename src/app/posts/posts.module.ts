@@ -11,6 +11,7 @@ import { PostsComponent } from './posts.component';
 import { PostDetailsComponent } from './post-details/post-details.component';
 import { CreatePostComponent } from './create-post/create-post.component';
 import { NotificationService } from '../shared/services/notification.service';
+import { ConfirmationAlertComponent } from '../shared/confirmation-alert/confirmation-alert.component';
 
 
 
@@ -20,7 +21,8 @@ import { NotificationService } from '../shared/services/notification.service';
     CommonModule,
     HttpClientModule,
     MaterialModule,
-    PostRoutingModule
+    PostRoutingModule,
+    ConfirmationAlertComponent,
   ],
   providers: [PostsService , NotificationService],
 })
