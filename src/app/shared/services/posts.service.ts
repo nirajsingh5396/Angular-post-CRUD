@@ -10,7 +10,7 @@ import { IPosts } from '../models/posts.model';
 })
 export class PostsService {
 
-  baseUrl = `${environment.API_BASE_URL}`;
+  baseUrl = `${environment.API_BASE_URL}/posts`;
 
   /**
    * Setting headers if required
@@ -27,9 +27,29 @@ export class PostsService {
   constructor(private httpClient: HttpClient) { }
 
   getPosts(): Observable<IPosts[]> {
-    
-    const url = `${this.baseUrl}/posts`;
+    const url = `${this.baseUrl}`;
     return this.httpClient.get<IPosts[]>(url, this.options);
+  }
+
+  getPostByID(post: IPosts): Observable<IPosts[]> {
+    const url = `${this.baseUrl}/${post.id}`;
+    return this.httpClient.get<IPosts[]>(url, this.options);
+  }
+
+  createPost(post: IPosts): Observable<any> {
+    const url = `${this.baseUrl}`;
+    return this.httpClient.post<any>(url, post, this.options);
+  }
+
+  updatePost(post: IPosts): Observable<any> {
+    const url = `${this.baseUrl}/${post.id}`;
+    return this.httpClient.get<any>(url, this.options);
+  }
+
+
+  deletePost(post: IPosts): Observable<any> {
+    const url = `${this.baseUrl}/${post.id}`;
+    return this.httpClient.delete<any>(url, this.options)
   }
 
 }
