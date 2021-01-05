@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 
 import { MatPaginator, MatTableDataSource } from '@angular/material';
+import { Router } from '@angular/router';
 import { IPosts } from '../shared/models/posts.model';
 import { PostsService } from '../shared/services/posts.service';
 
@@ -20,7 +21,9 @@ export class PostsComponent implements OnInit {
     'body'
   ];
 
-  constructor(private postsService: PostsService) { }
+  constructor(
+    private postsService: PostsService,
+  ) { }
 
   ngOnInit() {
     this.postsService.getPosts().subscribe(posts => {
@@ -28,5 +31,7 @@ export class PostsComponent implements OnInit {
       this.dataSource.paginator = this.paginator;
     });
   }
+
+
 
 }

@@ -31,9 +31,9 @@ export class PostsService {
     return this.httpClient.get<IPosts[]>(url, this.options);
   }
 
-  getPostByID(post: IPosts): Observable<IPosts[]> {
-    const url = `${this.baseUrl}/${post.id}`;
-    return this.httpClient.get<IPosts[]>(url, this.options);
+  getPostByID(id: number): Observable<IPosts> {
+    const url = `${this.baseUrl}/${id}`;
+    return this.httpClient.get<IPosts>(url, this.options);
   }
 
   createPost(post: IPosts): Observable<any> {

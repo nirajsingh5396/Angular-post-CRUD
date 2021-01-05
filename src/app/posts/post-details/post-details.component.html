@@ -1,1 +1,22 @@
-<p>post-details works!</p>
+<table *ngIf="post$ | async as post">
+
+    <div class="width-gap">
+        <tr>ID</tr>
+        <tr>User ID</tr>
+        <tr>Title</tr>
+        <tr>Description</tr>
+
+    </div>
+
+    <div class="width-gap">
+        <tr>{{post.id}}</tr>
+        <tr>{{post.userId}}</tr>
+        <tr>{{post.title}}</tr>
+        <tr>{{post.body}}</tr>
+
+    </div>
+
+
+</table>
+
+<table>

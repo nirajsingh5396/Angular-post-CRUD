@@ -9,7 +9,9 @@
         ID
       </th>
       <td mat-cell *matCellDef="let element" matTooltip="{{ element.id}}">
+        <div class="text-decoration" [routerLink]="['/posts', element.id]"   >
         {{ element.id }}
+        </div>
       </td>
     </ng-container>
 
