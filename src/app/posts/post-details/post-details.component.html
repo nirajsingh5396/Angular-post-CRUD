@@ -1,24 +1,23 @@
-<table *ngIf="post$ | async as post">
+<table *ngIf="post$ | async as posts">
 
     <h3>Post details</h3>
-    
+
     <div class="width-gap">
         <tr>ID</tr>
-        <tr>User ID</tr>
-        <tr>Title</tr>
+        <tr>{{ comments ? 'Email': 'User ID'}}</tr>
+        <tr>{{comments ? 'Name' : 'Title'}}</tr>
         <tr>Description</tr>
 
     </div>
 
-    <div class="width-gap">
+    <div class="width-gap" *ngFor="let post of posts">
         <tr>{{post.id}}</tr>
-        <tr>{{post.userId}}</tr>
-        <tr>{{post.title}}</tr>
+        <tr>{{comments ? post.email : post.userId}}</tr>
+        <tr>{{comments ? post.name: post.title}}</tr>
         <tr>{{post.body}}</tr>
+
 
     </div>
 
 
 </table>
-
-<table>

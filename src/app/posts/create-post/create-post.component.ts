@@ -35,10 +35,10 @@ export class CreatePostComponent implements OnInit {
       this.postService.getPostByID(+id).subscribe(post => {
         if (post) {
           this.newPostForm.setValue({
-            'id': post.id,
-            'userId': post.userId,
-            'title': post.title,
-            'body': post.body
+            'id': post[0].id,
+            'userId': post[0].userId,
+            'title': post[0].title,
+            'body': post[0].body
           });
         }
       }, (err) => {

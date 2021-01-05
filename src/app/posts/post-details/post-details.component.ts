@@ -11,7 +11,11 @@ import { PostsService } from 'src/app/shared/services/posts.service';
 })
 export class PostDetailsComponent implements OnInit {
 
-  post$: Observable<IPosts>;
+  post$: Observable<IPosts[]>;
+
+  postWithComments$: Observable<IPosts[]>;
+  comments: string;
+
 
   constructor(
     private activedRoute: ActivatedRoute,
@@ -20,7 +24,12 @@ export class PostDetailsComponent implements OnInit {
 
   ngOnInit() {
     const id = +this.activedRoute.snapshot.paramMap.get('id');
-    this.post$ = this.postService.getPostByID(id);
+    this.comments = this.activedRoute.snapshot.paramMap.get('comments');
+    if (!this.comments) {
+      this.post$ = this.postService.getPostByID(id);
+    } else{
+      this.post$ = this.postService.getPostByIDWithComments(id);
+    }
 
   }
 

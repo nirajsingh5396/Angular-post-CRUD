@@ -23,6 +23,10 @@ const routes: Routes = [
         path: ':id',
         component: PostDetailsComponent
     },
+    {
+        path: ':id/:comments',
+        component: PostDetailsComponent
+    },
 
 ];
 

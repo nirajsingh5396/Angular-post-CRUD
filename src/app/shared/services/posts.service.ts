@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { IPosts } from '../models/posts.model';
 
@@ -31,9 +32,21 @@ export class PostsService {
     return this.httpClient.get<IPosts[]>(url, this.options);
   }
 
-  getPostByID(id: number): Observable<IPosts> {
+  getPostByID(id: number): Observable<IPosts[]> {
+    const posts: IPosts[] = []
     const url = `${this.baseUrl}/${id}`;
-    return this.httpClient.get<IPosts>(url, this.options);
+    return this.httpClient.get<IPosts>(url, this.options).pipe(
+      map(post => {
+        posts.push(post);
+        return posts;
+      })
+    );
+  }
+
+  getPostByIDWithComments(id: number): Observable<IPosts[]> {
+    const url = `${this.baseUrl}/${id}/comments`;
+    console.log(url);
+    return this.httpClient.get<IPosts[]>(url, this.options);
   }
 
   createPost(post: IPosts): Observable<any> {
