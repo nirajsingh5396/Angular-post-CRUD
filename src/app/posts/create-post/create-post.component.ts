@@ -42,6 +42,8 @@ export class CreatePostComponent implements OnInit {
             'body': post.body
           });
         }
+      },(err)=>{
+        this.notity.showNotification('Something went wrong', 'top', 'error');
       })
     }
 
@@ -52,7 +54,7 @@ export class CreatePostComponent implements OnInit {
       return;
     }
     const post = this.newPostForm.value as IPosts;
-    this.newPostForm.reset(this.newPostForm);
+    this.newPostForm.reset('');
     this.postService.createPost(post).subscribe(post => {
       if (post.id) {
         this.notity.showNotification('New Post has been Created successfully', 'top', 'green-snackbar');
