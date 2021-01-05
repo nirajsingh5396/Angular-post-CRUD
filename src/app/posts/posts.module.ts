@@ -13,6 +13,7 @@ import { CreatePostComponent } from './create-post/create-post.component';
 import { NotificationService } from '../shared/services/notification.service';
 import { ConfirmationAlertComponent } from '../shared/confirmation-alert/confirmation-alert.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AllPostsComponent } from './all-posts/all-posts.component';
 
 
 
@@ -22,6 +23,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     PostDetailsComponent,
     CreatePostComponent,
     ConfirmationAlertComponent,
+    AllPostsComponent,
   ],
   imports: [
     CommonModule,
