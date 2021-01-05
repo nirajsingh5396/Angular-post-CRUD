@@ -1,1 +1,36 @@
-<p>create-post works!</p>
+<form [formGroup]="newPostForm" (ngSubmit)="onCreateNewPost()">
+
+    <h3>Create New Post</h3>
+
+    <div class="form-container">
+        <mat-form-field appearance="outline">
+            <mat-label>Enter ID</mat-label>
+            <input matInput formControlName="id" required>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Enter User Id</mat-label>
+            <input matInput formControlName="userId" required>
+        </mat-form-field>
+
+    </div>
+
+    <div class="form-container">
+        <mat-form-field appearance="outline">
+            <mat-label>Enter title</mat-label>
+            <input matInput formControlName="title" required>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Enter description</mat-label>
+            <input matInput formControlName="body">
+        </mat-form-field>
+
+        <div>
+            <button mat-raised-button color="primary" type="submit" [disabled]="!newPostForm.valid">Add Post</button>
+        </div>
+
+
+    </div>
+
+</form>

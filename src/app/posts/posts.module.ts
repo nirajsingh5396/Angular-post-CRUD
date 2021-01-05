@@ -12,6 +12,7 @@ import { PostDetailsComponent } from './post-details/post-details.component';
 import { CreatePostComponent } from './create-post/create-post.component';
 import { NotificationService } from '../shared/services/notification.service';
 import { ConfirmationAlertComponent } from '../shared/confirmation-alert/confirmation-alert.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -25,6 +26,7 @@ import { ConfirmationAlertComponent } from '../shared/confirmation-alert/confirm
   imports: [
     CommonModule,
     HttpClientModule,
+    ReactiveFormsModule,
     MaterialModule,
     PostRoutingModule,
   ],
