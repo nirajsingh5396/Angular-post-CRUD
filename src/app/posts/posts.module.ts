@@ -16,14 +16,19 @@ import { ConfirmationAlertComponent } from '../shared/confirmation-alert/confirm
 
 
 @NgModule({
-  declarations: [PostsComponent, PostDetailsComponent, CreatePostComponent],
+  declarations: [
+    PostsComponent,
+    PostDetailsComponent,
+    CreatePostComponent,
+    ConfirmationAlertComponent,
+  ],
   imports: [
     CommonModule,
     HttpClientModule,
     MaterialModule,
     PostRoutingModule,
-    ConfirmationAlertComponent,
   ],
-  providers: [PostsService , NotificationService],
+  providers: [PostsService, NotificationService],
+  entryComponents: [ConfirmationAlertComponent]
 })
 export class PostsModule { }

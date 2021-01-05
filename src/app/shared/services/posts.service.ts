@@ -47,8 +47,8 @@ export class PostsService {
   }
 
 
-  deletePost(post: IPosts): Observable<any> {
-    const url = `${this.baseUrl}/${post.id}`;
+  deletePost(id: number): Observable<any> {
+    const url = `${this.baseUrl}/${id}`;
     return this.httpClient.delete<any>(url, this.options)
   }
 
