@@ -8,11 +8,12 @@ import { PostsService } from '../shared/services/posts.service';
 
 
 import { PostsComponent } from './posts.component';
+import { PostDetailsComponent } from './post-details/post-details.component';
 
 
 
 @NgModule({
-  declarations: [PostsComponent],
+  declarations: [PostsComponent, PostDetailsComponent],
   imports: [
     CommonModule,
     HttpClientModule,
